@@ -11,6 +11,15 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    this.$store.dispatch('getStudents');
+  },
+}
+</script>
+
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
