@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import Profile from './views/Profile.vue'
 import Quiz from './views/Quiz.vue'
 import Rank from './views/Rank.vue'
+import Login from './views/Login.vue'
+import Register from './views/Register.vue'
 
 Vue.use(Router)
 
@@ -15,6 +17,16 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
     },
     {
       path: '/profile',
