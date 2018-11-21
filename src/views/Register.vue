@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import firebase from 'firebase/app';
+import 'firebase/auth';
 export default {
   name: 'register',
   data() {
@@ -36,14 +38,23 @@ export default {
   methods: {
     register: function (evt) {
       evt.preventDefault();
-      console.log('register clicked');
-      this.$store.dispatch('register', {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password
+      firebase.auth()
+      .createUserAndRetrieveDataWithEmailAndPassword(this.email, this.password)
+      .then(credential => { 
+        var dbStudent = {
+          'email': this.email,
+          'first_name': this.firstName,
+          'last_name': this.lastName,
+          'roles_permissions': {
+            'roles': 'user'
+          },
+          'uid': credential.user.uid,
+          'user_data': {}
+        }
+        this.$store.dispatch('addStudent', dbStudent);
+        this.$router.push('/profile');
       })
-    }
+    },
   }
 }
 </script>

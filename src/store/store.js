@@ -56,29 +56,11 @@ export default new Vuex.Store({
           context.commit('setStudent', dbStudent);
         })
     },
-    register(context, payload) {
-      firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(payload.email, payload.password)
-        .then(credential => {
-          console.log(credential.user.uid);
-
-          var dbStudent = {
-            'email': credential.user.email,
-            'first_name': payload.firstName,
-            'last_name': payload.lastName,
-            'roles_permissions': {
-              'roles': 'user'
-            },
-            'uid': credential.user.uid,
-            'user_data': {}
-          }
-          context.dispatch('addStudent', dbStudent);
-        })
-    },
-    addStudent(context, payload) {
-      console.log(payload);
+    addStudent(context, payload) { 
       db.collection("users")
       .doc(payload.uid).set(payload).then(function () {
         console.log("Document successfully written!");
+        context.commit('setStudent', payload);
       });
     }
   }

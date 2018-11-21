@@ -7,12 +7,29 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/login">Login</router-link> |
     <router-link to="/register">Register</router-link>
+    <button @click="logout">Logout</button>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import 'firebase/auth'
 export default {
-  name: "navbar"
+  name: "navbar",
+  data() {
+    return {
+      isLoggedIn: false,
+      currentUser: false
+    }
+  },
+  methods: {
+    logout: function () {
+      firebase.auth().signOut()
+      .then(() => {
+        this.$router.push('/login')
+      })
+    }
+  }
 };
 </script>
 
