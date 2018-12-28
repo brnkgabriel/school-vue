@@ -1,0 +1,23 @@
+<div id="quiz" v-if="student">
+  <h1>Quiz</h1>
+  <div class="tabs tabs-style-underline">
+    <nav>
+      <ul>
+        <li v-for="(type, index) in quizTypes" :key="index">
+          <a :href="'#section-' + type" :class="'icon icon-' + type">
+            <span>{{type}}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="content-wrap">
+      <section v-for="(type, index) in quizTypes" :key="index" :id="'section-' + type">
+        <ul>
+          <li>
+            {{index}}
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>

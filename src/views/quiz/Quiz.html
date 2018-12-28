@@ -1,0 +1,43 @@
+<div id="quiz" v-if="student">
+  <h1>Quiz</h1>
+
+  <div class="container"> 
+    <nav>
+      <a href="#" class="js-menu-open menu-open">
+        <i>menu</i>
+      </a>
+    </nav>
+    <div class="js-side-nav-container side-nav-container">
+      <div class="js-side-nav side-nav">
+        <div :class="'side-nav-level ' + eventsClass">
+          <a @click="eventsClass=''" class="close-events" href="#">back</a>
+          <h2>{{selectedTime.date}}</h2>
+          <ul>
+            <li v-for="(event, index) in selectedTime.events" :key="index" @click="selectMaterials(event)">{{event}}</li>
+          </ul>
+        </div>
+        <a href="#0" class="js-menu-close menu-close">
+          <i>close</i>
+        </a>
+        <div class="hidden">{{searched.length}}</div>
+        <input v-model="search" type="text" placeholder="Enter search term...">
+        <button @click.prevent="gotoPage('prev')">Prev Page</button>
+        <button @click.prevent="gotoPage('next')">Next Page</button>
+
+        <h2 class="icon icon-world">Creation till Date</h2>
+        <ul>
+          <li class="open-events" v-for="(time, index) in timeline" :key="index">
+            <a href="#" @click.prevent="selectTime(time)">{{time.date}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="selected-materials">
+    <div class="selected-material" v-for="(material, index) in selectedMaterials" :key="index">
+      <div class="selected-material-title">{{material.title}}</div>
+      <div class="selected-material-thumbnail"><img :src="getThumbnail(material.location)" alt="thumbnail"/></div>
+    </div>
+  </div>
+</div>

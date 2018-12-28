@@ -1,18 +1,4 @@
-<template>
-  <div id="app">
-    <navbar />
-    <router-view/>
-  </div>
-</template>
 
-<script>
-import Navbar from './components/Navbar.vue'
-export default {
-  components: {
-    Navbar
-  },
-  created() {
-    this.$store.dispatch('getStudents');
-  },
-}
-</script>
+<template src="./App.html"></template>
+<script src="./App.js"></script>
+<style src="./App.css"></style>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="icons.css">
+  <link rel="stylesheet" href="component.css">
+  <title>Sidebar Transitions</title>
+</head>
+
+<body>
+  
+		<div id="st-container" class="st-container">
+      
+        <nav class="st-menu st-effect-5" id="menu-5">
+          <h2 class="icon icon-stack">Sidebar</h2>
+          <ul>
+            <li><a class="icon icon-data" href="#">Data Management</a></li>
+            <li><a class="icon icon-location" href="#">Location</a></li>
+            <li><a class="icon icon-study" href="#">Study</a></li>
+            <li><a class="icon icon-photo" href="#">Collections</a></li>
+            <li><a class="icon icon-wallet" href="#">Credits</a></li>
+          </ul>
+        </nav>
+        
+        <!-- content push wrapper -->
+        <div class="st-pusher">
+          
+          <div class="st-content"><!-- this is the wrapper for the content -->
+            <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
+              <!-- Top Navigation -->
+              <div class="codrops-top clearfix">
+                <a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Tutorials/3DShadingWithBoxShadows/"><span>Previous Demo</span></a>
+                <span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16292"><span>Back to the Codrops Article</span></a></span>
+              </div>
+              <header class="codrops-header">
+                <h1>Sidebar Transitions <span>Transition effects for off-canvas views</span></h1>
+              </header>
+              <div class="main clearfix">
+                <div id="st-trigger-effects" class="column"> 
+                  <button data-effect="st-effect-5">Reverse slide out</button>
+                </div>
+                <div class="column">
+                  <p>Sidebar menus or off-canvas navigations can be revealed in many creative ways.</p>
+                  <p>Here is some inspiration for showing them in style using CSS transitions.</p>
+                </div>
+                <div class="info">
+                  <p>If you enjoyed this demo you might also like:</p>
+                  <p><a href="http://tympanus.net/Development/HeaderEffects/">On Scroll Header Effects</a></p>
+                  <p><a href="http://tympanus.net/Development/PageTransitions/">A Collection of Page Transitions</a></p>
+                </div>
+              </div><!-- /main -->
+            </div><!-- /st-content-inner -->
+          </div><!-- /st-content -->
+        </div><!-- /st-pusher -->
+      </div><!-- /st-container -->
+  <script src="./classie.js"></script>
+  <script src="./sidebar-effects.js"></script>
+</body>
+
+</html>

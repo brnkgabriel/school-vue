@@ -1,0 +1,28 @@
+#dragme {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  background: #05041e;
+  color: #FFF;
+  border-radius: 15px;
+  border: outset 5px #42c8f4;
+  cursor: move;
+  position: fixed;
+  left: 30px;
+  top: 30px;
+}
+
+#dragme.reset {
+  left: 30px !important;
+  top: 30px !important;
+}
+
+.container {
+  background-color: aqua;
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 350px;
+  left: 100px;
+  z-index: -1
+}

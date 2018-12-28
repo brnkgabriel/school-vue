@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Drag and Drop</title>
+</head>
+
+<body>
+  <h2>Drag my blocks panel to panel!</h2>
+  <div data-drop-target="true">
+    <div id="box1" draggable="true" class="box navy">hey</div>
+    <div id="box2" draggable="true" class="box red"></div>
+    <div id="box3" draggable="true" class="box orange"></div>
+    <div id="box4" draggable="true" class="box navy"></div>
+    <div id="box5" draggable="true" class="box red"></div>
+    <div id="box6" draggable="true" class="box green"></div>
+    <div id="box7" draggable="true" class="box orange"></div>
+  </div>
+  <div data-drop-target="true"></div>
+  <script src="./script.js"></script>
+</body>
+
+</html>

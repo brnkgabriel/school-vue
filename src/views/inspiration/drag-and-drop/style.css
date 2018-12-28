@@ -1,0 +1,42 @@
+h2 {
+  color: #a7a3a4;
+  margin-left: 80px;
+}
+
+[data-drop-target] {
+  height: 400px;
+  width: 200px;
+  margin: 25px;
+  background-color: gainsboro;
+  float: left;
+}
+
+.drag-enter {
+  border: 2px dashed #000;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+.box:nth-child(3) {
+  clear: both;
+}
+
+.navy {
+  background-color: navy;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: darkgreen;
+}
+
+.orange {
+  background-color: orange;
+}

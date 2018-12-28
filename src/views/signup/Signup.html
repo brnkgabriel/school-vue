@@ -1,0 +1,25 @@
+<div id="signup">
+  <form>
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" v-model="firstName" />
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" v-model="lastName" />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" id="email" v-model="email" />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="text" id="password" v-model="password" />
+    </div>
+    <div>
+      <label for="birthday">Birthday:</label>
+      <input type="date" id="birthday" v-model="birthday" />
+    </div>
+    <button @click="signup" type="submit">Signup</button>
+  </form>
+</div>

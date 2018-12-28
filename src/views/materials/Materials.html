@@ -1,0 +1,124 @@
+<div v-if="selectedMaterial">
+  <div class="save-materials">
+    <button class="foo-button mdc-button" @click.prevent="saveMaterials()">Save Materials</button>
+  </div>
+  <div class="tabs tabs-style-underline">
+    <nav>
+      <ul>
+        <li :class="tab.materials" @click="setState('materials')">
+          <a href="#section-materials" class="icon icon-content">
+            <span>Materials</span>
+          </a>
+        </li>
+        <li :class="tab.questions" @click="setState('questions')">
+          <a href="#section-questions" class="icon icon-questions">
+            <span>Questions</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="content-wrap">
+      <section id="section-materials" :class="tab.materials">
+        <div class="material-list">
+          <div class="materials">
+            <div v-for="(material, index) in materials" :key="index">
+              <div class="material-title" @click="selectMaterial(material)">{{material.title}}</div>
+              <div class="material-questions icon icon-questions" @click="openQuestion(material)"></div>
+            </div>
+          </div>
+          <div id="infinite-list" class="timeline">
+            <div v-for="(time, index) in timeline" :key="index" @click="selectTime(time)">{{time.date}}</div>
+          </div>
+        </div>
+        <div class="material-pane">
+          <div class="material-edit-pane">
+            <div class="material-edit-title">
+              <label for="material-edit-title">Title: </label>
+              <input type="text" id="material-edit-title" placeholder="material title..." v-model="selectedMaterial.title">
+            </div>
+            <div class="material-edit-author">
+              <label for="material-edit-author">Author: </label>
+              <input type="text" id="material-edit-author" placeholder="material author..." v-model="selectedMaterial.author">
+            </div>
+            <div class="material-edit-location">
+              <label for="material-edit-location">Location: </label>
+              <input type="text" id="material-edit-location" placeholder="material location..." v-model="selectedMaterial.location">
+            </div>
+            <div class="material-edit-event">
+              <label for="material-edit-event">Event: </label>
+              <select v-model="selectedMaterial.event">
+                <option v-for="(event, index) in selectedEvents" :key="index">{{event}}</option>
+              </select>
+            </div>
+            <div class="material-edit-time">
+              <label for="material-edit-time">Time: </label>
+              <input disabled type="text" id="material-edit-time" placeholder="material time..." v-model="selectedMaterial.time">
+            </div>
+            <div class="material-edit-type">
+              <label for="material-edit-type">Type: </label>
+              <input type="text" id="material-edit-type" placeholder="material type..." v-model="selectedMaterial.type">
+            </div>
+            <div class="material-edit-actions">
+              <button @click.prevent="addMaterial()">Add Material</button>
+            </div>
+          </div>
+          <div class="material-preview-pane">
+            <div class="material-preview-title">
+              <span>{{selectedMaterial.title}}</span>
+            </div>
+            <div class="material-preview-author">
+              <span>{{selectedMaterial.author}}</span>
+            </div>
+            <iframe :src="selectedMaterial.location" frameborder="0"></iframe>
+            <div class="material-preview-event">
+              <span>{{selectedMaterial.event}}</span>
+            </div>
+            <div class="material-preview-time">
+              <span>{{selectedMaterial.time}}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-questions" :class="tab.questions">
+        <div class="question-list">
+          <div v-for="(question, index) in selectedMaterial.questions" :key="index">
+            <div class="question-title" @click="selectQuestion(question)">{{question.title}}</div>
+          </div>
+        </div>
+        <div class="question-pane">
+          <div class="question-edit-pane">
+            <div class="question-edit-title">
+              <label for="question-edit-title">Title: </label>
+              <textarea name="" id="question-edit-title" cols="30" rows="10" v-model="selectedQuestion.title"></textarea>
+            </div>
+            <div class="question-edit-option">
+              <label for="question-edit-option-value">Option: </label>
+              <input type="text" id="question-edit-option-value" v-model="selectedOption.value" />
+              <label for="question-edit-option-pts">Points: </label>
+              <input type="number" id="question-edit-option-pts" v-model="selectedOption.pts" />
+            </div>
+            <div class="question-add-option">
+              <button @click="addOption()">Add Option</button>
+            </div>
+            <div class="material-edit-actions">
+              <button @click="addQuestion()">Add Question</button>
+            </div>
+          </div>
+          <div class="question-preview-pane">
+            <div class="question-preview-title">
+              <span>{{selectedQuestion.title}}</span>
+            </div>
+            <div class="question-preview-options">
+              <ul>
+                <li v-for="(option, index) in selectedQuestion.options" :key="index">
+                  <span class="option-value-pts" @click="selectOption(option)">{{option.value}} ({{option.pts}})</span>
+                  <span class="option-delete">x</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

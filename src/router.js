@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Profile from './views/Profile.vue'
-import Quiz from './views/Quiz.vue'
-import Rank from './views/Rank.vue'
-import Login from './views/Login.vue'
-import Register from './views/Register.vue'
-import firebase from 'firebase/app'
+import About from './views/About.vue'
+import Profile from './views/profile/Profile.vue'
+import Quiz from './views/quiz/Quiz.vue'
+import Rank from './views/rank/Rank.vue'
+import Materials from './views/materials/Materials.vue'
+import Login from './views/login/Login.vue'
+import Signup from './views/signup/Signup.vue'
 
 Vue.use(Router)
 
@@ -17,26 +18,22 @@ let router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
-      meta: {
-        requiresGuest: true
-      }
+      component: Home
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     },
     {
       path: '/login',
       name: 'login',
-      component: Login,
-      meta: {
-        requiresGuest: true
-      }
+      component: Login
     },
     {
-      path: '/register',
-      name: 'register',
-      component: Register,
-      meta: {
-        requiresGuest: true
-      }
+      path: '/signup',
+      name: 'signup',
+      component: Signup
     },
     {
       path: '/profile',
@@ -55,6 +52,14 @@ let router = new Router({
       }
     },
     {
+      path: '/materials',
+      name: 'materials',
+      component: Materials,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/rank',
       name: 'rank',
       component: Rank,
@@ -63,54 +68,11 @@ let router = new Router({
       }
     },
     {
-      path: '/about',
-      name: 'about',
-      meta: {
-        requiresGuest: true
-      },
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '*',
+      name: 'others',
+      redirect: '/'
     }
   ]
-})
-
-// Nav Guards
-
-router.beforeEach((to, from, next) => {
-  // Check for requiresAuth guard
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    // Check if NOT logged in
-    if (!firebase.auth().currentUser) {
-      // go to login
-      next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath
-        }
-      });
-    } else {
-      // proceed to the route (authenticated pages)
-      next();
-    }
-  } else if (to.matched.some(record => record.meta.requiresGuest)) {
-    // Check if is logged in
-    if (firebase.auth().currentUser) {
-      // go to dashboard
-      next({
-        path: '/',
-        query: {
-          redirect: to.fullPath
-        }
-      })
-    } else {
-      // proceed to the route (login/register)
-      next();
-    }
-  } else {
-    // proceed to route
-  }
 })
 
 export default router;

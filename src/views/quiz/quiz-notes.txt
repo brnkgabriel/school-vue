@@ -1,0 +1,174 @@
+Nov 27, 2018
+------------
+
+quiz_status: {
+  nextQuiz: 5,
+  ids: {
+    worship: material-xxxx,
+    message: material-xxxx,
+    bible: material-xxxx,
+    books: material-xxxx,
+    image: material-xxxx,
+  }
+  missedQuestions: [
+    "material-1544331983313|5
+  ]
+}
+worship
+message
+bible
+books
+image
+
+var questionMaterial = 
+  {
+    "title": "in the beginning",
+    "uid": 'material-xxxx',
+    "location": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/fn-wEOpPsMo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "author": "superbook",
+    "type": "message",
+    "stage": "one",
+    "questions": [
+
+    ]
+  }
+
+Question types:
+. Find the Word in Pace and Ramsay's Cartoon Pictures.
+. Multiple Choice Questions-Drag in to the center gift box for Worship and Message
+. Typing books
+
+var responses = [
+  {
+    type: 'worship',
+    responses: [],
+    totalPoints: 1450
+  }
+]
+uid|serial|stage|question|type|option.value|option.pts
+question-1544106119844|option.value
+lastQuestion
+var newQuestion = {
+  uid: 'question-#',
+  serial: 0,
+  stage: 0,
+  img: '',
+  question: 'Enter Question...',
+  options: [],
+  option: {
+    key: '',
+    value: '',
+    pts: 0
+  },
+  answer: null,
+  type: ''
+}
+var question = {
+  id: '#|#',
+  img: '',
+  question: '#?',
+  options: [
+    {key: '#',  value: '#', pts: 10},
+    {key: '-#',  value: '-#', pts: -#}
+  ],
+  answer: {key: '#',  value: '#', pts: 10},
+  type: '#'
+}
+
+type = worship, message, bible, books, picture
+id = 'serial number | stage number'
+stage number = chronological stage of the bible
+
+worship
+-------
+var question = {
+  id: '1|1',
+  img: '',
+  serial: 0,
+  stage: 0,
+  question: 'What is the solid rating?',
+  options: [
+    {key: 'solid',  value: 'Solid', pts: 10},
+    {key: 'great',  value: 'Great', pts: -10},
+    {key: 'good',   value: 'Good', pts: -10},
+    {key: 'unproven', value: 'Unproven', pts: -10}
+  ],
+  answer: {key: 'solid',  value: 'Solid', pts: 10},
+  type: 'worship',
+}
+
+message
+-------
+var question = {
+  id: '1|1',
+  img: '',
+  serial: 0,
+  stage: 0,
+  question: 'What is the solid rating?',
+  options: [
+    {key: 'solid',  value: 'Solid', pts: 10},
+    {key: 'great',  value: 'Great', pts: -10},
+    {key: 'good',   value: 'Good', pts: -10},
+    {key: 'unproven', value: 'Unproven', pts: -10}
+  ],
+  answer: {key: 'solid',  value: 'Solid', pts: 10},
+  type: 'message',
+}
+
+bible
+-----
+var question = {
+  id: '1|1',
+  img: '',
+  serial: 0,
+  stage: 0,
+  question: 'In the beginning God created the heaven and the earth',
+  options: [
+    {key: 'gen-1v1',  value: 'In the beginning God Created the heavens and the earth', pts: value.wordCount}
+  ],
+  answer: {key: 'gen-1v1',  value: 'In the beginning God Created the heavens and the earth', pts: value.wordCount},
+  type: 'bible',
+}
+
+books
+-----
+var question = {
+  id: '1|1',
+  img: '',
+  serial: 0,
+  stage: 0,
+  question: 'In the beginning God created the heaven and the earth',
+  options: [
+    {key: 'cha-1p1',  value: 'Exploits of Faith', pts: value.wordCount}
+  ],
+  answer: {key: 'cha-1p1',  value: 'Exploits of Faith', pts: value.wordCount},
+  type: 'books',
+}
+
+illustrations
+-------------
+
+var question = {
+  id: '1|1',
+  img: 'sfs.jpg',
+  serial: 0,
+  stage: 0,
+  question: 'What is the circled word?',
+  options: [
+    {key: 'sfs',  value: 'Science Falsely So-Called', pts: 10},
+    {key: 'sci',  value: 'Science', pts: -10},
+    {key: 'sfc',   value: 'Science Fiction Called', pts: -10}
+  ],
+  answer: {key: 'sfs',  value: 'Science Falsely So-Called', pts: 10},
+  type: 'illustrations',
+}
+
+2018-03-09|material-1544331983313|5|1|450|5|0|material-1544331983314|5|1|450|5|0|material-1544331983315|5|1|450|5|0|material-1544331983313|5|1|450|5|0
+
+TODO
+----
+. to get one question from each stage
+. that question must not be among the ones done already
+. index in each question stage group must match nextQuiz
+
+title
