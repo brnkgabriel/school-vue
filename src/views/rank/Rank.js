@@ -1,7 +1,10 @@
 
 import beforeRouteEnter from '../../util/beforeRouteEnter'
-import computed from './computed-rank'
 export default {
-  computed: computed,
+  computed: {
+    students: function () {
+      return this.$store.state.students;
+    }
+  },
   beforeRouteEnter: beforeRouteEnter
 };

@@ -22,6 +22,15 @@ body {
   background-color: #F1ECFF;
 }
 
+body * { 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #2E3037;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
 .title h1 {
   font-weight: 300;
   text-transform: uppercase;
@@ -337,4 +346,9 @@ body,
   transition: transform 0.3s;
   -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0)
+}
+
+.toolbar {
+  height: 50px;
+  background-color: indigo;
 }

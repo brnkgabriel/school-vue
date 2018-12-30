@@ -10,6 +10,6 @@ export default {
     this.$store.dispatch('getMaterials')
   },
   mounted() {
-    new NavMenu();
+    // new NavMenu();
   },
 }

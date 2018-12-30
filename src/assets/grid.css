@@ -25,10 +25,13 @@ html {
   margin-bottom: 10px;
 }
 
+.container {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 @media only screen and (min-width: 800px) {
-  .container {
-    text-align: center;
-  }
 
   .one { width: 100%; }
 

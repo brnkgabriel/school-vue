@@ -1,0 +1,10 @@
+.section {
+  height: 250px;
+  background-color: aqua;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+
+.students {
+  margin: 10px;
+}

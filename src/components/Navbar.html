@@ -1,0 +1,46 @@
+<!-- <nav class="st-menu st-effect-5" id="menu-5">
+    <h2>Menu</h2>
+    <ul>
+      <li><router-link class="nav-link" to="/">Home</router-link></li>
+      <li v-if="isLoggedIn"><router-link class="nav-link" to="/profile">Profile</router-link></li>
+      <li v-if="isLoggedIn"><router-link class="nav-link" to="/quiz">Quiz</router-link></li>
+      <li v-if="isLoggedIn && student.roles_permissions.roles === 'admin'"><router-link class="nav-link" to="/materials">Materials</router-link></li>
+      <li v-if="isLoggedIn"><router-link class="nav-link" to="/rank">Rank</router-link></li> 
+      <li v-if="!isLoggedIn"><router-link class="nav-link" to="/login">Login</router-link></li>
+      <li v-if="!isLoggedIn"><router-link class="nav-link" to="/signup">Signup</router-link></li>
+      <li v-if="isLoggedIn"><button class="nav-link" @click="logout">Logout</button></li>
+      <li><router-link class="nav-link" to="/about">About</router-link></li>
+    </ul>
+  </nav> -->
+<nav id="navbar">
+  <h2>The Word</h2>
+  <ul>
+    <li>
+      <router-link class="nav-link" to="/">Home</router-link>
+    </li>
+    <li v-if="isLoggedIn">
+      <router-link class="nav-link" to="/profile">Profile</router-link>
+    </li>
+    <li v-if="isLoggedIn">
+      <router-link class="nav-link" to="/quiz">Quiz</router-link>
+    </li>
+    <li v-if="isLoggedIn && student.roles_permissions.roles === 'admin'">
+      <router-link class="nav-link" to="/materials">Materials</router-link>
+    </li>
+    <li v-if="isLoggedIn">
+      <router-link class="nav-link" to="/rank">Rank</router-link>
+    </li>
+    <li v-if="!isLoggedIn">
+      <router-link class="nav-link" to="/login">Login</router-link>
+    </li>
+    <li v-if="!isLoggedIn">
+      <router-link class="nav-link" to="/signup">Signup</router-link>
+    </li>
+    <li v-if="isLoggedIn">
+      <button class="nav-link" @click="logout">Logout</button>
+    </li>
+    <li>
+      <router-link class="nav-link" to="/about">About</router-link>
+    </li>
+  </ul>
+</nav>
