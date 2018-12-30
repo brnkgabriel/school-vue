@@ -78,6 +78,10 @@ export default {
     },
     selectMaterial: function (material) {
       this.selectedMaterial = material;
+      var time = util.bibleTimeline.find(time => {
+        return time.date.toLowerCase() === this.selectedMaterial.time.toLowerCase()
+      });
+      this.selectTime(time);
     },
     addMaterial: function () {
       this.materials.unshift(properties.newMaterial());

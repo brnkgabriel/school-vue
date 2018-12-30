@@ -1,0 +1,47 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.row::before,
+.row::after {
+  display: table;
+  content: ' ';
+  clear: both;
+}
+
+.one,
+.one-third,
+.two-thirds,
+.one-fourth,
+.half {
+  width: 100%;
+}
+
+.column {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 800px) {
+  .container {
+    text-align: center;
+  }
+
+  .one { width: 100%; }
+
+  .half { width: calc(100% / 2); }
+
+  .one-third { width: calc(100% / 3); }
+
+  .one-fourth { width: calc(100% / 4); }
+
+  .two-thirds { width: calc(100% / 3 * 2); }
+
+  .column {
+    display: inline-block;
+    vertical-align: top;
+  }
+}

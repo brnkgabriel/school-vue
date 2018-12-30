@@ -1,0 +1,33 @@
+.nav { text-align: center; };
+
+.nav ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.nav ul li {
+  display: inline-block;
+}
+
+.nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: #444;
+  transition: 0.4s ease background;
+  padding: 15px 20px;
+  border-radius: 2px;
+  background-color: #f4f4f4;
+}
+
+.nav ul li a:hover { background-color: #ccc; }
+
+@media all and (min-width: 800px) {
+  .nav {
+    float: right;
+    padding: 10px 0 0 0;
+  }
+
+  .nav ul li a { padding: 5px 10px; }
+}
