@@ -33,10 +33,27 @@
   </div>
 
   <div class="selected-materials">
-    <div class="selected-material" v-for="(material, index) in selectedMaterials" :key="index">
+    <div
+    class="selected-material modal-trigger modal-toggle"
+    v-for="(material, index) in selectedMaterials"
+    :key="index"
+    @click="loadMaterial(material)">
       <div class="selected-material-title">{{material.title}}</div>
       <div class="selected-material-thumbnail">
         <img :src="getThumbnail(material.location)" alt="thumbnail" />
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal">
+    <div class="modal-sandbox" @click="toggleModal()"></div>
+    <div class="modal-box" v-if="loadedMaterial">
+      <div class="modal-header">
+        <div class="close-modal" @click="toggleModal()">&#10006;</div>
+        <h1>{{loadedMaterial.title}}</h1>
+      </div>
+      <div class="modal-body">
+        <iframe :src="loadedMaterial.location" frameborder="0"></iframe>
       </div>
     </div>
   </div>

@@ -8,6 +8,27 @@ import birthdate from './birthdate'
 var mapData = require('./map-data');
 
 var util = {
+  boundaries: function (page, numPages, recordsPerPage) {
+    var start, end;
+    if (page === numPages) {
+      start = (page - 1) * recordsPerPage;
+      end = util.bibleTimeline.length - 1;
+    } else {
+      end = (page * recordsPerPage) - 1;
+      start = end - recordsPerPage + 1;
+    }
+    return { start, end }
+  },
+  searched: function (search, collection) {
+    return collection.filter(time => {
+      var condition = false;
+      if (
+        time.date.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
+        time.events.join(', ').toLowerCase().indexOf(search.toLowerCase()) !== -1
+      ) { condition = true; }
+      return condition
+    })
+  },
   getQuestions: function (nextQuiz, materials) {
     var keys = Object.keys(nextQuiz), questions = [];
     keys.forEach(key => {

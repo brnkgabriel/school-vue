@@ -25,6 +25,7 @@ export default {
       this.student = util.localStorage().student
       this.materials = util.localStorage().materials
     })
+    console.log(this.student)
   },
   computed: {
     students: function () {

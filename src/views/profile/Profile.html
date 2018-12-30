@@ -29,7 +29,7 @@
       score history
     </div>
     <div class="column one-third section">
-      <div class="students">
+      <div class="students" v-if="student.roles_permissions.roles === 'admin'">
         <ul>
           <li v-for="(student, index) in students">
             {{student.first_name}} {{student.last_name}}

@@ -1,7 +1,7 @@
 import beforeRouteEnter from '../../util/beforeRouteEnter';
 import util from "../../util";
 import { bus } from "../../main";
-import SideNav from './sidenav'
+import SideNav from './sidenav';
 
 export default {
   data() {
@@ -10,31 +10,26 @@ export default {
       materials: [],
       quizTypes: util.quizTypes,
       timeline: null,
+      modal: null,
       currentPage: 1,
       recordsPerPage: 15,
       search: '',
       selectedTime: util.bibleTimeline[0],
       eventsClass: '',
-      selectedMaterials: []
+      selectedMaterials: [],
+      loadedMaterial: null
     };
   },
   computed: {
     searched: function () {
-      var filtered = util.bibleTimeline.filter(time => {
-        var condition = false;
-        if (
-          time.date.toLowerCase().indexOf(this.search.toLowerCase()) !== -1 ||
-          time.events.join(', ').toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-        ) { condition = true; }
-        return condition
-      })
-      this.timeline = filtered;
-      return filtered;
+      this.timeline = util.searched(this.search, util.bibleTimeline)
+      return util.searched(this.search, util.bibleTimeline);
     }
   },
   mounted: function () {
     this.gotoPage('', util.bibleTimeline);
     new SideNav();
+    this.modal = document.querySelector('.modal');
   },
   created() {
     this.student = util.localStorage().student;
@@ -48,6 +43,16 @@ export default {
   },
   beforeRouteEnter: beforeRouteEnter,
   methods: {
+    toggleModal: function () {
+      if (this.modal.classList.contains('is-visible')) {
+        this.loadedMaterial = null;
+      }
+      this.modal.classList.toggle('is-visible')
+    },
+    loadMaterial: function (material) {
+      this.loadedMaterial = material;
+      this.toggleModal();
+    },
     updateStudent: function (evt) {
       evt.preventDefault();
       this.$store.dispatch("updateStudent", util.encodeStudent(this.student));
@@ -58,20 +63,15 @@ export default {
     },
     gotoPage: function (page) {
       if (page) { page === 'prev' ? this.currentPage-- : this.currentPage++ }
-      if (this.currentPage < 1) { this.currentPage = this.numPages();  }
+      if (this.currentPage < 1) { this.currentPage = this.numPages(); }
       else if (this.currentPage > this.numPages()) { this.currentPage = 1; }
       return this.changePage(this.currentPage);
     },
     changePage: function (page) {
-      var numPages = this.numPages(), start, end; 
-      if (page === numPages) {
-        start = (page - 1) * this.recordsPerPage;
-        end = util.bibleTimeline.length - 1;
-      } else {
-        end = (page * this.recordsPerPage) - 1;
-        start = end - this.recordsPerPage + 1;
-      }
-      this.timeline = util.bibleTimeline.slice(start, end);
+      this.timeline = util.bibleTimeline.slice(
+        util.boundaries(page, this.numPages, this.recordsPerPage).start,
+        util.boundaries(page, this.numPages, this.recordsPerPage).end
+      )
     },
     numPages: function () {
       return Math.ceil(util.bibleTimeline.length / this.recordsPerPage);
@@ -81,6 +81,7 @@ export default {
         return material.event.toLowerCase() === event.toLowerCase()
       })
       this.selectedMaterials = sMaterials;
+      this.loadedMaterial = this.selectMaterials[0];
     },
     getThumbnail: function (embedLink) {
       var videoIdArray = embedLink.split('/');
