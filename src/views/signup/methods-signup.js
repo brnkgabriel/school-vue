@@ -21,8 +21,8 @@ var methods = {
         'user_data': {
           'nextQuiz': 0,
           'birthday': this.birthday,
-          'scores': today + '@0', 
-          'state': today + '@0'
+          'scores': [], 
+          'state': {}
         }
       }
       this.$store.dispatch('addStudent', dbStudent);
@@ -31,7 +31,6 @@ var methods = {
   },
   checkStudent: function () {
     if (this.$store.state.student) {
-      console.log('student role', this.$store.state.student.roles_permissions.roles)
       bus.$emit('isLoggedIn', this.$store.state.student);
       this.$router.push("/profile");
       clearInterval(this.delayToCompleteProcessing);

@@ -54,6 +54,17 @@
       </div>
       <div class="modal-body">
         <iframe :src="loadedMaterial.location" frameborder="0"></iframe>
+        <div class="questions" v-if="!endedQuiz">
+          <!-- <div v-for="(question, questionIdx) in loadedMaterial.questions" :key="questionIdx" class="question"> -->
+            <div class="question-title">{{nextQuiz.title}}</div>
+            <ul>
+              <li @click="nextQuestion(quizState.index, optionIdx)" v-for="(option, optionIdx) in nextQuiz.options" :key="optionIdx">{{option.value}}</li>
+            </ul>
+          <!-- </div> -->
+        </div>
+        <div class="questions" v-if="endedQuiz">
+          {{ endedQuiz }}
+        </div>
       </div>
     </div>
   </div>

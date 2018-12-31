@@ -1,6 +1,6 @@
 import { bus } from './main'
 import store from './store/store'; 
-import process from './process-scores'
+// import process from './process-scores'
 import birthdate from './birthdate'
 // Comment the above when you want to run test
 // var process = require('./process-scores');
@@ -67,12 +67,12 @@ var util = {
     })
     return quiz;
   },
-  getScores: function (responses, questions) {
-    return process.getScores(responses, questions)
-  },
-  obtainScore: function (foundQuestion, studentAnswer) {
-    return process.obtainScore(foundQuestion, studentAnswer)
-  },
+  // getScores: function (responses, questions) {
+  //   return process.getScores(responses, questions)
+  // },
+  // obtainScore: function (foundQuestion, studentAnswer) {
+  //   return process.obtainScore(foundQuestion, studentAnswer)
+  // },
   fetchMaterials: function () { 
     var CheckMaterials = function () {
       if (store.state.materials) {
@@ -91,33 +91,33 @@ var util = {
   getBirthdayObject: function (birthday) {
     return birthdate.getBirthdayObject(birthday);
   },
-  decodeScore: function (codedScore, materials) {
-    return process.decodeScore(codedScore, materials);
-  },
-  encodeScore: function (decodedScores) {
-    return process.encodeScore(decodedScores)
-  },
-  decodeScores: function (scores, materials){
-    return process.decodeScores(scores, materials)
-  },
-  encodeScores: function (scores) {
-    return process.encodeScores(scores)
-  },
+  // decodeScore: function (codedScore, materials) {
+  //   return process.decodeScore(codedScore, materials);
+  // },
+  // encodeScore: function (decodedScores) {
+  //   return process.encodeScore(decodedScores)
+  // },
+  // decodeScores: function (scores, materials){
+  //   return process.decodeScores(scores, materials)
+  // },
+  // encodeScores: function (scores) {
+  //   return process.encodeScores(scores)
+  // },
   localStorage: function () { 
     var dbStudent = JSON.parse(localStorage.getItem('student'))
     var dbMaterials = JSON.parse(localStorage.getItem('materials'))
-    var decodedStudent = util.decodeStudentData(dbStudent, dbMaterials);
-    return { student: decodedStudent, materials: dbMaterials }
+    // var decodedStudent = util.decodeStudentData(dbStudent, dbMaterials);
+    return { student: dbStudent, materials: dbMaterials }
   },
-  decodeStudentData: function (dbStudent, materials) {
-    var student = dbStudent;
-    var userData = util.getQuizData(student.user_data);
-    var state = util.decodeScore(userData.state, materials);
-    var scores = util.decodeScores(userData.scores, materials);
-    student.user_data.scores = scores
-    student.user_data.state = state
-    return student;
-  },
+  // decodeStudentData: function (dbStudent, materials) {
+  //   var student = dbStudent;
+  //   var userData = util.getQuizData(student.user_data);
+  //   var state = util.decodeScore(userData.state, materials);
+  //   var scores = util.decodeScores(userData.scores, materials);
+  //   student.user_data.scores = scores
+  //   student.user_data.state = state
+  //   return student;
+  // },
   today: {
     day: new Date().getDate(),
     month: new Date().getMonth() + 1,

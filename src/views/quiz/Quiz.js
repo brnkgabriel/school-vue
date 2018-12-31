@@ -17,13 +17,32 @@ export default {
       selectedTime: util.bibleTimeline[0],
       eventsClass: '',
       selectedMaterials: [],
-      loadedMaterial: null
+      loadedMaterial: null,
+      endedQuiz: '',
+      quizState: {
+        materialId: '',
+        index: 0,
+        response: []
+      }
     };
   },
   computed: {
     searched: function () {
       this.timeline = util.searched(this.search, util.bibleTimeline)
       return util.searched(this.search, util.bibleTimeline);
+    },
+    nextQuiz: function () {
+      if (!this.loadedMaterial.questions[this.quizState.index]) {
+        this.endedQuiz = `
+          You've completed the quiz for ${this.loadedMaterial.title}
+        `
+        return {
+          title: '',
+          uid: this.loadedMaterial.uid,
+          options: []
+        }
+      }
+      return this.loadedMaterial.questions[this.quizState.index]
     }
   },
   mounted: function () {
@@ -33,6 +52,7 @@ export default {
   },
   created() {
     this.student = util.localStorage().student;
+    console.log(this.student);
     this.materials = util.localStorage().materials;
     util.fetchMaterials();
 
@@ -43,6 +63,24 @@ export default {
   },
   beforeRouteEnter: beforeRouteEnter,
   methods: {
+    nextQuestion: function (questionIdx, optionIdx) {
+      this.quizState['materialId'] = this.loadedMaterial.uid;
+      this.quizState['index'] = this.quizState['index'] + 1;
+      this.quizState['response'].push(questionIdx + "|" + optionIdx);
+      this.updateStateAndScores(this.quizState)
+      console.log('student is', this.student)
+    },
+    updateStateAndScores: function (quizState) {
+      this.student.user_data.state = quizState;
+      var scoreIndex = this.student.user_data.scores.findIndex(score => {
+        return score.materialId === this.loadedMaterial.uid
+      });
+      if (scoreIndex === -1) {
+        this.student.user_data.scores.push(quizState);
+      } else {
+        this.student.user_data.scores[scoreIndex] = quizState;
+      }
+    },
     toggleModal: function () {
       if (this.modal.classList.contains('is-visible')) {
         this.loadedMaterial = null;

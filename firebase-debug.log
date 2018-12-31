@@ -1,0 +1,45 @@
+[debug] [2018-12-30T21:15:19.481Z] ----------------------------------------------------------------------
+[debug] [2018-12-30T21:15:19.504Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2018-12-30T21:15:19.504Z] CLI Version:   6.1.2
+[debug] [2018-12-30T21:15:19.504Z] Platform:      win32
+[debug] [2018-12-30T21:15:19.504Z] Node Version:  v8.11.3
+[debug] [2018-12-30T21:15:19.504Z] Time:          Sun Dec 30 2018 22:15:19 GMT+0100 (W. Central Africa Standard Time)
+[debug] [2018-12-30T21:15:19.504Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-30T21:15:19.720Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-30T21:15:19.721Z] > authorizing via signed-in user
+[debug] [2018-12-30T21:15:19.721Z] [iam] checking project school-2f6da for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2018-12-30T21:15:19.723Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-12-30T21:15:19.724Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-12-30T21:15:21.805Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-30T21:15:21.903Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/school-2f6da:testIamPermissions  
+
+[debug] [2018-12-30T21:16:04.095Z] Error: connect ETIMEDOUT 216.58.223.234:443
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.223.234:443
+[debug] [2018-12-30T21:16:45.541Z] ----------------------------------------------------------------------
+[debug] [2018-12-30T21:16:45.544Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2018-12-30T21:16:45.544Z] CLI Version:   6.1.2
+[debug] [2018-12-30T21:16:45.544Z] Platform:      win32
+[debug] [2018-12-30T21:16:45.544Z] Node Version:  v8.11.3
+[debug] [2018-12-30T21:16:45.544Z] Time:          Sun Dec 30 2018 22:16:45 GMT+0100 (W. Central Africa Standard Time)
+[debug] [2018-12-30T21:16:45.544Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-30T21:16:45.555Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-30T21:16:45.556Z] > authorizing via signed-in user
+[debug] [2018-12-30T21:16:45.556Z] [iam] checking project school-2f6da for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2018-12-30T21:16:45.558Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/school-2f6da:testIamPermissions  
+
+[debug] [2018-12-30T21:16:47.323Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-30T21:16:47.324Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/school-2f6da  
+ 
+[debug] [2018-12-30T21:17:10.564Z] Error: connect ETIMEDOUT 216.58.223.234:443
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.223.234:443
